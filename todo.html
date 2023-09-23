@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>document</title>
+    <link rel="stylesheet" href="todo.css" />
+  </head>[]
+  <body>
+    <h1>TODO LIST</h1>
+    <form id="form">
+      <input type="text" placeholder="project name" id="project name" />
+      <input type="date" placeholder="date" id="date" />
+      <input type="text" placeholder="activities" id="Act" />
+      <input type="text" placeholder="Priority" id="Priority" />
+      <input type="text" placeholder="Status" id="Status" />
+      <input type="submit" id="submit" />
+      <button onclick="window.print()">print</button>
+    </form>
+    <table border="1px" cellpadding="15px" cellspacing="15px">
+      <thead>
+        <tr>
+          <th>Project Name</th>
+          <th>Date</th>
+          <th>Activities</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <script>
+      document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        let pname = document.getElementById("name").value;
+        let date = document.getElementById("date").value;
+        let activities = document.getElementById("Act").value;
+        let priority = document.getElementById("Priority").value;
+        let status = document.getElementById("Status").value;
+
+        let tr = document.createElement("tr");
+        let td1 = document.createElement("td");
+        td1.innerHTML = pname;
+        let td2 = document.createElement("td");
+        td2.innerHTML = date;
+        let td3 = document.createElement("td");
+        td3.innerHTML = activities;
+        let td4 = document.createElement("td");
+        td4.innerHTML = priority;
+        let td5 = document.createElement("td");
+        td5.innerHTML = status;
+        let td6 = document.createElement("td");
+        td6.innerHTML = "delete";
+        td6.addEventListener("click", function (event) {
+          event.target.parentNode.remove();
+        });
+        tr.append(td1, td2, td3, td4, td5, td6);
+        document.getElementById("tbody").append(tr);
+      });
+    </script>
+  </body>
+</html>
